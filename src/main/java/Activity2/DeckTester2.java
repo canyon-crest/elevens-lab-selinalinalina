@@ -10,5 +10,8 @@ public class DeckTester2 {
 	 */
 	public static void main(String[] args) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		String[] myrank = {"Ace", "King", "Two"};
+		String[] mysuit = {"Hearts", "Diamonds", "Spades", "Clovers"};
+		int[] myvalue = {1, 13, 2};
 	}
 }
