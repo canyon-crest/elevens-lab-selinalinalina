@@ -1,5 +1,9 @@
 package Activity2;
 import java.util.List;
+
+import Activity4.Card4;
+import Activity5.Buggy1.Card5_1;
+
 import java.util.ArrayList;
 
 /**
@@ -32,11 +36,15 @@ public class Deck2 {
 	 */
 	public Deck2(String[] ranks, String[] suits, int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		for(String cardrank: ranks) {
-				for(int i =0; i< ranks.length -1; i++) {
-					cards.add(new Card2(cardrank, suits[i], values[i]));
+		cards = new ArrayList<Card2>(); 
+		for(int i =0; i<ranks.length; i++) {
+				for(int j = 0; j<suits.length; j++) {
+					cards.add(new Card2(ranks[i], suits[j], values[i]));
 				}
 			}
+		
+		shuffle();
+		size = cards.size();
 		}
 
 
@@ -46,12 +54,7 @@ public class Deck2 {
 	 */
 	public boolean isEmpty() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		if(cards.size() == 0) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return (size == 0);
 	}
 
 	/**
@@ -60,7 +63,7 @@ public class Deck2 {
 	 */
 	public int size() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		return cards.size();
+		return size;
 	}
 
 	/**
@@ -69,6 +72,15 @@ public class Deck2 {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		int length = cards.size();
+		for(int i = length -1 ; i>0; i--) {
+			int random = (int)(Math.random()*(i+1));
+			Card2 temp = cards.get(i);
+			cards.set(i, cards.get(random));
+			cards.set(random, temp);
+			
+		}
+		//size = cards.size();
 	}
 
 	/**
@@ -78,7 +90,16 @@ public class Deck2 {
 	 */
 	public Card2 deal() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		return new Card2("","",-1);
+		if(isEmpty()) {
+			return null;
+		}
+		
+		size--;
+		Card2 c = cards.get(size);
+		
+		return c;
+		//return new Card2("","",-1);
+		
 	}
 
 	/**

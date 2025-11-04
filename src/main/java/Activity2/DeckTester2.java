@@ -13,5 +13,7 @@ public class DeckTester2 {
 		String[] myrank = {"Ace", "King", "Two"};
 		String[] mysuit = {"Hearts", "Diamonds", "Spades", "Clovers"};
 		int[] myvalue = {1, 13, 2};
+		
+		Deck2 test = new Deck2(myrank, mysuit, myvalue);
 	}
 }
