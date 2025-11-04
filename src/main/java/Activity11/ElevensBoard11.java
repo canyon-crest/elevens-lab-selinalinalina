@@ -48,6 +48,7 @@ public class ElevensBoard11 extends Board11 {
 	 */
 	 @Override
 	 public boolean isLegal(List<Integer> selectedCards) {
+		 /* *** TO BE CHANGED INTO isLegal IN ACTIVITY 11 *** */
 	     return findPairSum11(selectedCards).size() > 0 ||
 	            findJQK(selectedCards).size() > 0;
 	 }
@@ -64,6 +65,7 @@ public class ElevensBoard11 extends Board11 {
 	 */
 	 @Override
 	 public boolean anotherPlayIsPossible() {
+		 /* *** TO BE CHANGED INTO findJQK IN ACTIVITY 11 *** */
 	     List<Integer> cIndexes = cardIndexes();
 	     return findPairSum11(cIndexes).size() > 0 ||
 	            findJQK(cIndexes).size() > 0;
@@ -78,6 +80,7 @@ public class ElevensBoard11 extends Board11 {
 	 *         an empty list, if an 11-pair was not found.
 	 */
 	private List<Integer> findPairSum11(List<Integer> selectedCards) {
+		/* *** TO BE CHANGED INTO findPairSum11 IN ACTIVITY 11 *** */
 	    List<Integer> pair = new ArrayList<Integer>();
 	    for (int i = 0; i < selectedCards.size(); i++) {
 	        for (int j = i + 1; j < selectedCards.size(); j++) {
@@ -106,15 +109,15 @@ public class ElevensBoard11 extends Board11 {
 		    List<Integer> trio = new ArrayList<Integer>();
 		    boolean foundJack = false, foundQueen = false, foundKing = false;
 
-		    for (Integer kObj : selectedCards) {
+		    for (Integer kObj: selectedCards) {
 		        int k = kObj.intValue();
-		        String rank = cardAt(k).rank();
+		        String rank= cardAt(k).rank();
 		        if (rank.equals("jack") && !foundJack) {
 		            trio.add(k);
 		            foundJack = true;
 		        } else if (rank.equals("queen") && !foundQueen) {
 		            trio.add(k);
-		            foundQueen = true;
+		            foundQueen =  true;
 		        } else if (rank.equals("king") && !foundKing) {
 		            trio.add(k);
 		            foundKing = true;
@@ -124,7 +127,7 @@ public class ElevensBoard11 extends Board11 {
 		    if (foundJack && foundQueen && foundKing) {
 		        return trio;
 		    } else {
-		        return new ArrayList<Integer>(); // empty list if not all found
+		        return new ArrayList<Integer>();
 		    }
 		}
 
@@ -144,6 +147,7 @@ public class ElevensBoard11 extends Board11 {
 	 */
 	 private boolean playPairSum11IfPossible() {
 		    List<Integer> pair = findPairSum11(cardIndexes());
+		    
 		    if (pair.size() > 0) {
 		        replaceSelectedCards(pair);
 		        return true;
@@ -159,7 +163,7 @@ public class ElevensBoard11 extends Board11 {
 	 */
 	 private boolean playJQKIfPossible() {
 		    List<Integer> trio = findJQK(cardIndexes());
-		    if (trio.size() > 0) {
+		    if (trio.size()> 0) {
 		        replaceSelectedCards(trio);
 		        return true;
 		    }
